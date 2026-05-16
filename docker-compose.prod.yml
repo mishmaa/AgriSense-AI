@@ -1,0 +1,63 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    env_file:
+      - ./.env.production
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - agrisense_postgres_prod:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ./.env.production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  iot-simulator:
+    build:
+      context: .
+      dockerfile: iot-simulator/Dockerfile
+    command:
+      [
+        "python",
+        "simulator.py",
+        "--api-url",
+        "http://backend:8000/api/v1",
+        "--interval",
+        "5",
+        "--count",
+        "100000"
+      ]
+    depends_on:
+      - backend
+    profiles:
+      - simulator
+    restart: unless-stopped
+
+volumes:
+  agrisense_postgres_prod:

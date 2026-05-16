@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: agrisense
+      POSTGRES_PASSWORD: agrisense
+      POSTGRES_DB: agrisense
+    ports:
+      - "55432:5432"
+    volumes:
+      - agrisense_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agrisense -d agrisense"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ./backend/.env.example
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api/v1
+      VITE_WS_BASE_URL: ws://localhost:8000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  iot-simulator:
+    build:
+      context: .
+      dockerfile: iot-simulator/Dockerfile
+    command: ["python", "simulator.py", "--dry-run", "--count", "5", "--interval", "1"]
+    profiles:
+      - simulator
+
+volumes:
+  agrisense_postgres:

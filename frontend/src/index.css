@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f6fbf7;
+  color: #10201c;
+}
+
+.dark body {
+  background: #06100d;
+  color: #eafff5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.58)),
+    rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 60px rgba(12, 45, 30, 0.12);
+  backdrop-filter: blur(22px);
+}
+
+.dark .glass {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035)),
+    rgba(10, 22, 19, 0.72);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+}
+
+.premium-surface {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.premium-surface::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.16) 36%, transparent 58%);
+  opacity: 0;
+  transform: translateX(-36%);
+  transition: opacity 240ms ease, transform 700ms ease;
+}
+
+.premium-surface:hover::before {
+  opacity: 1;
+  transform: translateX(42%);
+}
+
+.particle-field {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(115deg, rgba(18, 183, 106, 0.1), transparent 34%),
+    linear-gradient(245deg, rgba(56, 189, 248, 0.08), transparent 34%),
+    linear-gradient(180deg, transparent, rgba(18, 183, 106, 0.04));
+}
+
+.scan-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(18, 183, 106, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 88%);
+}
+
+.particle-dot {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  background: rgba(113, 239, 173, 0.62);
+  box-shadow: 0 0 12px rgba(113, 239, 173, 0.54);
+  animation: particle-drift linear infinite;
+}
+
+.holo-grid {
+  background-image:
+    linear-gradient(rgba(113, 239, 173, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.14) 1px, transparent 1px);
+  background-size: 34px 34px;
+  transform: perspective(680px) rotateX(58deg) translateY(42px) scale(1.24);
+  transform-origin: center bottom;
+}
+
+.holographic-map::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent 28%, rgba(18,183,106,0.08));
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  animation: shimmer 1.8s infinite;
+}
+
+.agri-toast {
+  border: 1px solid rgba(18, 183, 106, 0.26);
+  border-radius: 8px;
+  background: rgba(6, 16, 13, 0.92) !important;
+  color: #eafff5 !important;
+  backdrop-filter: blur(18px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 9999;
+  transform: translateY(-150%);
+  border-radius: 8px;
+  background: #12b76a;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(18, 183, 106, 0.42);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(18, 183, 106, 0.55);
+  outline-offset: 3px;
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(28px, -72px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

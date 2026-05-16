@@ -1,0 +1,51 @@
+{
+  "model": "LogisticRegression+TFIDF",
+  "accuracy": 0.8977,
+  "macro_f1": 0.82,
+  "rows": 1200,
+  "classification_report": {
+    "delay_irrigation": {
+      "precision": 0.6923076923076923,
+      "recall": 0.5294117647058824,
+      "f1-score": 0.6,
+      "support": 17.0
+    },
+    "fungal_risk": {
+      "precision": 0.5909090909090909,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.7027027027027027,
+      "support": 15.0
+    },
+    "heat_protection": {
+      "precision": 0.96875,
+      "recall": 0.96875,
+      "f1-score": 0.96875,
+      "support": 64.0
+    },
+    "normal_monitoring": {
+      "precision": 0.9345794392523364,
+      "recall": 0.9259259259259259,
+      "f1-score": 0.9302325581395349,
+      "support": 108.0
+    },
+    "wind_protection": {
+      "precision": 0.9137931034482759,
+      "recall": 0.8833333333333333,
+      "f1-score": 0.8983050847457628,
+      "support": 60.0
+    },
+    "accuracy": 0.8977272727272727,
+    "macro avg": {
+      "precision": 0.8200678651834792,
+      "recall": 0.8348175381263616,
+      "f1-score": 0.8199980691176,
+      "support": 264.0
+    },
+    "weighted avg": {
+      "precision": 0.9030114877993032,
+      "recall": 0.8977272727272727,
+      "f1-score": 0.8981210678195305,
+      "support": 264.0
+    }
+  }
+}

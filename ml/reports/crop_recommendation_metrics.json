@@ -1,0 +1,63 @@
+{
+  "model": "RandomForestClassifier",
+  "accuracy": 0.9318,
+  "macro_f1": 0.9211,
+  "rows": 1200,
+  "classification_report": {
+    "citrus": {
+      "precision": 0.8888888888888888,
+      "recall": 0.8888888888888888,
+      "f1-score": 0.8888888888888888,
+      "support": 18.0
+    },
+    "lettuce": {
+      "precision": 0.7954545454545454,
+      "recall": 0.9722222222222222,
+      "f1-score": 0.875,
+      "support": 36.0
+    },
+    "maize": {
+      "precision": 0.96875,
+      "recall": 1.0,
+      "f1-score": 0.9841269841269841,
+      "support": 31.0
+    },
+    "rice": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1-score": 0.8888888888888888,
+      "support": 20.0
+    },
+    "soybean": {
+      "precision": 0.9629629629629629,
+      "recall": 0.8387096774193549,
+      "f1-score": 0.896551724137931,
+      "support": 31.0
+    },
+    "tomato": {
+      "precision": 1.0,
+      "recall": 0.918918918918919,
+      "f1-score": 0.9577464788732394,
+      "support": 37.0
+    },
+    "wheat": {
+      "precision": 0.946236559139785,
+      "recall": 0.967032967032967,
+      "f1-score": 0.9565217391304348,
+      "support": 91.0
+    },
+    "accuracy": 0.9318181818181818,
+    "macro avg": {
+      "precision": 0.9374704223494545,
+      "recall": 0.9122532392117647,
+      "f1-score": 0.921103529149481,
+      "support": 264.0
+    },
+    "weighted avg": {
+      "precision": 0.9379810317043027,
+      "recall": 0.9318181818181818,
+      "f1-score": 0.9320413473983695,
+      "support": 264.0
+    }
+  }
+}

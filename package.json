@@ -1,0 +1,16 @@
+{
+  "name": "agrisense-ai",
+  "version": "1.0.0",
+  "description": "AgriSense AI is a production-style smart agriculture platform for IoT monitoring, AI recommendations, irrigation automation, disease detection, weather intelligence, marketplace workflows, drone/satellite concepts, and multilingual farmer operations.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

@@ -1,0 +1,24 @@
+{
+  "green_valley_multi_sensor": {
+    "soil_type": "loam",
+    "crop_stage": "vegetative",
+    "base_soil_moisture": 46,
+    "base_temperature": 27,
+    "base_humidity": 66,
+    "base_ph": 6.7,
+    "base_tank": 82,
+    "base_light": 48000,
+    "base_wind": 12
+  },
+  "greenhouse_leafy_sensor": {
+    "soil_type": "silt",
+    "crop_stage": "seedling",
+    "base_soil_moisture": 58,
+    "base_temperature": 24,
+    "base_humidity": 74,
+    "base_ph": 6.4,
+    "base_tank": 88,
+    "base_light": 36000,
+    "base_wind": 4
+  }
+}
